@@ -27,5 +27,8 @@ router.delete("/:id", auth, deleteCourse);
 router.patch("/:id", auth, updateCourse);
 router.get("/userCourses/:id", auth, getCoursesByUser);
 router.patch("/like/:id", auth, likeCourse);
+router.get("/", (req, res) => {
+    res.send("Helcome to Courses API - Courses");
+})
 
 export default router;
