@@ -1,6 +1,7 @@
 # Back-end do DevLearning
 
 Serviço front-end rodando no link: https://dev-learningbr.vercel.app/
+
 Serviço back-end rodando no link: https://cousers.herokuapp.com/
 
 # Rotas
@@ -9,6 +10,10 @@ Serviço back-end rodando no link: https://cousers.herokuapp.com/
     - (POST) /signup 
     - (POST) /signin
     - (POST) /googleSignIn
+    - (GET) / 
+    - (GET) /all 
+    - (PATCH) / 
+    - (DELE) / 
 
 - curses
     - Sem autenticação
