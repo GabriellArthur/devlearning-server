@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import userRouter from './src/routes/user.js'
 import coursesRouter from './src/routes/courses.js'
+import commentsRouter from './src/routes/comments.js'
 import dotenv from 'dotenv'
 
 const app = express();
@@ -15,7 +16,8 @@ app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 app.use("/users", userRouter); //http://localhost:5000/users/
-app.use("/curses", coursesRouter); //http://localhost:5000/tour/
+app.use("/courses", coursesRouter); //http://localhost:5000/tour/
+app.use("/comments", commentsRouter); //http://localhost:5000/comments/
 app.get("/", (req, res) => {
    res.send("Helcome to Courses API");
 })

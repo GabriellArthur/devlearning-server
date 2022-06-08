@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const courseSchema = mongoose.Schema({
    title: String,
+   subtitle: String,
    description: String,
    name: String,
    creator: String,
@@ -17,6 +18,6 @@ const courseSchema = mongoose.Schema({
    },
 });
 
-const CoursesModal = mongoose.model("Curse", courseSchema);
+const CoursesModal = mongoose.model("Course", courseSchema);
 
 export default CoursesModal;

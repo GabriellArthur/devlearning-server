@@ -1,12 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { signin, signup, googleSignIn, getUser, updateUser, deleteUser, getUsers } from '../controllers/user.js'
-
-router.get("/", getUser);
-router.get("/all", getUsers);
-router.patch("/", updateUser);
-router.delete("/", deleteUser);
+import { signin, signup, googleSignIn } from '../controllers/user.js'
 
 router.post("/signup", signup);
 router.post("/signin", signin);
