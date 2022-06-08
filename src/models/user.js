@@ -16,6 +16,10 @@ const userSchema = mongoose.Schema({
       type: String,
       require: false,
    },
+   phonenumber: {
+      type: String,
+      require: false,
+   },
    googleId: {
       type: String,
       require: false,

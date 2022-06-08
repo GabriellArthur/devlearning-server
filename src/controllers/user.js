@@ -5,57 +5,6 @@ import UserModel from "../models/user.js"
 
 const secret = "test";
 
-export const getUsers = async (req, res) => {
-   try {
-      const Users = await UserModel.find()
-      res.status(200).json(Users)
-   } catch (error) {
-      res.status(500).json({ message: error });
-   }
-}
-
-export const getUser = async (req, res) => {
-   const { email } = req.body;
-
-   try {
-      const oldUser = await UserModel.findOne({ email });
-      if (!oldUser) return res.status(404).json({ message: "user doesn't exist" });
-
-      res.status(200).json({ result: oldUser })
-   } catch (error) {
-      res.status(500).json({ message: error });
-   }
-}
-
-export const updateUser = async (req, res) => {
-   const { email, firstName, lastName } = req.body;
-
-   try {
-      const oldUser = await UserModel.findOne({ email });
-      if (!oldUser) return res.status(404).json({ message: "user doesn't exist" });
-      const updatedUser = {
-         firstName,
-         lastName,
-      };
-      await UserModel.findByIdAndUpdate(oldUser._id, updatedUser);
-      res.status(200).json({ result: updatedUser })
-   } catch (error) {
-      res.status(500).json({ message: error });
-   }
-}
-
-export const deleteUser = async (req, res) => {
-   const { email } = req.body;
-   try {
-      const oldUser = await UserModel.findOne({ email });
-      if (!oldUser) return res.status(404).json({ message: "user doesn't exist" });
-      await UserModel.findByIdAndRemove(oldUser._id);
-      res.status(200).json({ message: "User deleted successfully" })
-   } catch (error) {
-      res.status(500).json({ message: "Something went wrong" });
-   }
-}
-
 export const signin = async (req, res) => {
    const { email, password } = req.body;
 
@@ -70,8 +19,10 @@ export const signin = async (req, res) => {
       const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "1h" });
 
       res.status(200).json({ result: oldUser, token })
+
    } catch (error) {
       res.status(500).json({ message: "Something went wrong" });
+      console.log(err);
    }
 }
 
@@ -94,6 +45,7 @@ export const signup = async (req, res) => {
       res.status(201).json({ result, token });
    } catch (err) {
       res.status(500).json({ message: "Something went wrong" });
+      console.log(err);
    }
 }
 

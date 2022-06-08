@@ -41,8 +41,8 @@ export const getCourses = async (req, res) => {
 export const getCourse = async (req, res) => {
    const { id } = req.params;
    try {
-      const coure = await CoursesModal.findById(id);
-      res.status(200).json(coure);
+      const course = await CoursesModal.findById(id);
+      res.status(200).json(course);
    } catch (error) {
       res.status(404).json({ message: "Something went wrong" });
    }
