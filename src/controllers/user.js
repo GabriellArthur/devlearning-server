@@ -37,12 +37,11 @@ export const signin = async (req, res) => {
 
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
-    console.log(err);
   }
 }
 
 export const signup = async (req, res) => {
-  const { email, password, firstName, lastName } = req.body;
+  const { email, password, name, phoneNumber } = req.body;
   try {
     const oldUser = await UserModel.findOne({ email });
     if (oldUser) {
@@ -54,7 +53,8 @@ export const signup = async (req, res) => {
     const result = await UserModel.create({
       email,
       password: hashedPassword,
-      name: `${firstName} ${lastName}`,
+      name: name,
+      phoneNumber: phoneNumber,
       token,
     })
 
